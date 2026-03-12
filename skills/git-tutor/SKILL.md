@@ -102,10 +102,11 @@ Then react to their output. If it says `nothing to commit, working tree clean`, 
 what that means. If there are untracked files, use that as the starting point.
 
 Encourage the user to use the **VS Code terminal**. The first time in a session you ask the
-user to type a command in the terminal, focus it for them by running the VS Code command
-`terminal.focus` (use `run_vscode_command` tool if available). This ensures the terminal is
-open and ready. You can also tell them they can press `` Ctrl+` `` or `` Cmd+` `` to toggle
-it manually. This keeps everything in one window — chat on one side, terminal on the other.
+user to type a command, try to open the terminal for them by running the VS Code command
+`terminal.focus` (use `run_vscode_command` tool if available). Also tell them they can press
+`` Ctrl+` `` (Windows/Linux) or `` Cmd+` `` (Mac) to toggle it manually. Make sure they're
+in the right folder — they can run `pwd` to check, and you can help them `cd` if needed.
+This keeps everything in one window — chat on one side, terminal on the other.
 
 ### Use the real workspace
 

@@ -1,0 +1,42 @@
+{
+  "skill_name": "git-tutor",
+  "assertions": [
+    {"id": "skill-assessment", "text": "Assesses user skill level through conversation"},
+    {"id": "interactive-tools", "text": "Uses or mentions vscode_askQuestions/askQuestion for interactive prompts"},
+    {"id": "git-tutor-setup", "text": "Creates/explains the .git-tutor/ folder and its purpose"},
+    {"id": "gitignore-explained", "text": "Adds .git-tutor/ to .gitignore and explains what .gitignore is"},
+    {"id": "terminal-first", "text": "Leads with having the user type commands in terminal"},
+    {"id": "transparency", "text": "Explains workspace changes before making them"},
+    {"id": "tone-adaptive", "text": "Adapts tone to the user's apparent level"},
+    {"id": "gamification", "text": "Includes XP, achievements, or streak tracking"},
+    {"id": "progress-tracking", "text": "Saves/updates progress in .git-tutor/ JSON files"},
+    {"id": "how-to-return", "text": "Tells user how to come back (mentions /git-tutor or similar)"},
+    {"id": "cheatsheet", "text": "Mentions or updates a personalized cheatsheet"}
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've never used git before, can you teach me?",
+      "expected_output": "Should assess skill level (detect total beginner), explain and create .git-tutor/ folder, add .git-tutor/ to .gitignore with explanation of what .gitignore is, check if workspace has a git repo and walk through git init if not, then teach first commands (status, add, commit) by having the user type them in the terminal. Should be warm, patient, and non-condescending.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I know basic git but I always mess up when merging branches. Can you help me practice?",
+      "expected_output": "Should assess as intermediate with a specific gap. Should set up a scenario in the workspace: create branches with conflicting changes, walk the user through merging and resolving the conflict in the terminal. Should explain conflict markers and how to resolve them. Should offer cleanup after the exercise. Should track progress and award XP.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Can you set up a rebase challenge for me? I want something hard.",
+      "expected_output": "Should assess as advanced. Should set up a challenging rebase scenario in the workspace — e.g., multiple commits that need squashing or reordering via interactive rebase. Should warn about the destructive nature of rebase, offer a safety branch, and let the user work through it with minimal hand-holding. Should verify their work after.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "My manager asked me to update a README in our GitHub repo and I have no idea what git is or how to use it",
+      "expected_output": "Should detect a non-technical user with a concrete task. Should be extra patient and explain concepts in plain language. Should start by explaining what git and GitHub are at a high level, then walk through the specific workflow they need: clone the repo, edit the README, stage, commit, and push. Should explain each step before asking them to do it. Should avoid jargon or explain it when unavoidable. Should create .git-tutor/ with explanation.",
+      "files": []
+    }
+  ]
+}

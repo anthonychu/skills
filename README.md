@@ -25,10 +25,21 @@ npx skills add https://github.com/anthonychu/skills --skill azure-connectors
 
 Interactive git and GitHub tutor that teaches through hands-on practice in VS Code's terminal. Adapts to any skill level — from someone who's never opened a terminal to experienced developers filling knowledge gaps. Features gamification with XP, streaks, achievements, and challenges.
 
-**Install:**
-```bash
-npx skills add https://github.com/anthonychu/skills --skill git-tutor
-```
+**Getting started:**
+
+1. Open a terminal and create a new folder:
+   ```bash
+   mkdir git-playground && cd git-playground
+   ```
+2. Install the skill (see [Skills docs](https://github.com/vercel-labs/skills) for details):
+   ```bash
+   npx skills add https://github.com/anthonychu/skills --skill git-tutor
+   ```
+3. Open the folder in VS Code:
+   ```bash
+   code .
+   ```
+4. Open VS Code's chat panel (Ctrl+Shift+I / Cmd+Shift+I) and say something like "I want to learn git" or type `/git-tutor` to start the tutorial
 
 **Capabilities:**
 - Adaptive skill assessment and personalized lesson flow

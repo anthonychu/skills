@@ -1,0 +1,29 @@
+{
+  "skill_name": "azure-connectors",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to post a message to my Teams channel. The team is called 'Engineering' and I want to post in the General channel. The connection is already set up in my Azure subscription (sub id is abc-123, resource group is my-rg, connection name is teams). Can you post 'Hello team, standup in 5 minutes!' to that channel?",
+      "expected_output": "Should list teams to find the team ID, list channels to find General, then post the message using curl + dynamicInvoke",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I want to read my recent unread emails. I have an office365 connector set up in Azure (subscription ef6e1243, resource group test-connectors, connection name office365). Show me my latest 5 unread emails.",
+      "expected_output": "Should use the Office 365 connector to list recent unread emails via dynamicInvoke with the right query params",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I need to set up an Office 365 connector in Azure from scratch. My subscription is abc-123 and I want to put it in resource group 'my-connectors' in westus. Walk me through the whole process.",
+      "expected_output": "Should create the connection via az rest, open the Azure Portal for auth (not listConsentLinks), verify the connection status, save the full resource ID to .env.connectors (e.g. SELECTED_OFFICE365_CONNECTOR=/subscriptions/.../providers/Microsoft.Web/connections/office365), and add .env.connectors to .gitignore",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Send an email to bob@contoso.com saying 'meeting moved to 3pm'. I set up my connector a while ago.",
+      "expected_output": "Should check for .env.connectors, load saved Office 365 connector details from it, confirm which connector it's using, then send the email without asking for subscription/resource group/connection name",
+      "files": []
+    }
+  ]
+}

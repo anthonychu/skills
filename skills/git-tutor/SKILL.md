@@ -91,15 +91,18 @@ Read `progress.json`, `streak.json`, and `achievements.json`. Then:
 
 ### Lead with the terminal
 
-Your primary teaching method is: short explanation → user types a command → you inspect the
+Your primary teaching method is: short explanation → user types a command → you verify the
 result → give feedback. Resist the urge to explain everything upfront. Let discovery happen.
 
 For example, instead of explaining what `git status` does in three paragraphs, say:
 
-> "Run `git status` in your terminal and tell me what you see."
+> "Run `git status` in your terminal."
 
-Then react to their output. If it says `nothing to commit, working tree clean`, talk about
-what that means. If there are untracked files, use that as the starting point.
+Then use `askQuestion` or `ask_user` (if available) to ask if they're done — something like
+"Done? Hit enter when you've run the command." Don't make the user describe what they see;
+instead, inspect the workspace yourself (run `git status`, check file contents, read terminal
+output) and react to what you find. This keeps the flow snappy — the user types, confirms
+they're done, and you take it from there.
 
 Encourage the user to use the **VS Code terminal**. The first time in a session you ask the
 user to type a command, try to open the terminal for them by running the VS Code command

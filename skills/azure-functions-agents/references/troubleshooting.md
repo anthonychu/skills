@@ -149,9 +149,21 @@ az functionapp show -g <rg> -n <func-app> --query "state" -o tsv
 # Check app settings (verify env vars are set)
 az functionapp config appsettings list -g <rg> -n <func-app> --query "[].{name:name}" -o table
 
-# View recent logs (live tail)
-az webapp log tail -g <rg> -n <func-app>
+# Query App Insights directly (recent exceptions)
+APPI_NAME=$(az resource list -g <rg> --resource-type Microsoft.Insights/components --query "[0].name" -o tsv)
+az monitor app-insights query --app "$APPI_NAME" -g <rg> \
+  --analytics-query "exceptions | where timestamp > ago(1h) | order by timestamp desc | project timestamp, problemId, outerMessage" \
+  -o table
+
+# Query App Insights (recent agent invocations)
+az monitor app-insights query --app "$APPI_NAME" -g <rg> \
+  --analytics-query "requests | where timestamp > ago(1h) | where name contains 'agent' | order by timestamp desc | project timestamp, name, resultCode, success" \
+  -o table
 ```
+
+> **Do not use `az webapp log tail` or `az functionapp log tail`.** These are unreliable on
+> Flex Consumption and miss most agent output. Always use Application Insights for deployed
+> app diagnostics.
 
 ### Function app not starting
 
